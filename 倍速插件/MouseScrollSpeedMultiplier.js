@@ -8,13 +8,6 @@
     let targetElement = null; // 播放速率控制元素
     let videoElement = null; // 视频元素
 
-    function debounce(func, wait = 300) {
-        let timeout;
-        return (...args) => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-    }
     // 鼠标进入目标元素时的处理函数
     function handleMouseEnter() {
         isHovering = true;
