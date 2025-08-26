@@ -8,6 +8,13 @@
     let targetElement = null; // 播放速率控制元素
     let videoElement = null; // 视频元素
 
+    function debounce(func, wait = 300) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
     // 鼠标进入目标元素时的处理函数
     function handleMouseEnter() {
         isHovering = true;
@@ -34,12 +41,14 @@
         let newRate = videoElement.playbackRate + (STEP * direction);
         newRate = Math.min(Math.max(newRate, MIN_RATE), MAX_RATE);
 
+        // 四舍五入到两位小数
         // 应用新倍率
-        videoElement.playbackRate = newRate;
+        videoElement.playbackRate = Number(newRate.toFixed(2));
     }
 
     // 初始化函数
     function init() {
+        console.log('初始化播放速率控制插件');
         // 移除旧的元素监听器
         if (targetElement) {
             targetElement.removeEventListener('mouseenter', handleMouseEnter);
@@ -63,10 +72,7 @@
         targetElement.addEventListener('wheel', handleWheel);
     }
 
+
     // 初始化并监听DOM变化
     init();
-    new MutationObserver(init).observe(document.body, {
-        childList: true,
-        subtree: true
-    });
 })();

@@ -16,6 +16,14 @@ HTML5的 <video> 元素全称（HTMLVideoElement）
 .poster: 视频封面图片地址（默认空）
 .preload: 是否预加载（默认auto）
 
+## 防抖
+## 观察者、MutationObserver
+new MutationObserver(init).observe(playerControlEntity, {
+childList: false,   // 监控子元素增减
+subtree: false,     // 监控所有后代元素
+attributes: true    // 不需要监听属性变化（节省资源）
+});
+
 
 
 
