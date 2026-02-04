@@ -6,7 +6,7 @@ import md5 from 'md5';
  * B站WBI签名工具类
  * 用于生成B站WBI接口所需的合法签名参数，解决403权限问题
  */
-export const WbiSignUtil = {
+export const Bilibili_WbiSignUtil = {
     // WBI签名混淆密钥表（B站固定值）
     mixinKeyEncTab: [
         46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43, 5, 49,
@@ -71,7 +71,7 @@ export const WbiSignUtil = {
                 sub_key: extractKey(sub_url)
             };
         } catch (error) {
-            console.error('[WbiSignUtil] 获取WBI密钥失败：', error);
+            console.error('[Bilibili_WbiSignUtil] 获取WBI密钥失败：', error);
             throw error; // 向上抛出，让调用方处理
         }
     },
@@ -131,7 +131,7 @@ export const WbiSignUtil = {
             const signedQuery = this.encWbi(params, img_key, sub_key);
             return `${baseUrl}?${signedQuery}`;
         } catch (error) {
-            console.error('[WbiSignUtil] 生成签名URL失败：', error);
+            console.error('[Bilibili_WbiSignUtil] 生成签名URL失败：', error);
             throw error;
         }
     }

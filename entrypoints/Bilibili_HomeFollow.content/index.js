@@ -1,5 +1,5 @@
 import { defineContentScript, storage } from "#imports";
-import {WbiSignUtil} from "../../utils/WbiSignUtil.js";
+import {Bilibili_WbiSignUtil} from "../../utils/Bilibili_WbiSignUtil.js";
 
 // 定义内容脚本：修改主页推荐为订阅模式
 export default defineContentScript({
@@ -52,7 +52,7 @@ export default defineContentScript({
                     // 3.1 请求该UP主点赞的第一个视频信息
                     //https://api.bilibili.com/x/space/wbi/acc/relation?mid=3461571588131521&web_location=333.1387&w_rid=ab7ec3086fe8e2ea959670b5cf0726a3&wts=1769443782
                     // 2. 生成带签名的URL
-                    const signedUrl = await WbiSignUtil.getSignedUrl(
+                    const signedUrl = await Bilibili_WbiSignUtil.getSignedUrl(
                         'https://api.bilibili.com/x/space/wbi/arc/search',
                         apiParams
                     );
@@ -60,7 +60,7 @@ export default defineContentScript({
                     //     mid:3461571588131521,
                     //     web_location:333.1387
                     // }
-                    // const signedUrl = await WbiSignUtil.getSignedUrl(
+                    // const signedUrl = await Bilibili_WbiSignUtil.getSignedUrl(
                     //     'https://api.bilibili.com/x/space/wbi/acc/relation',params
                     // );
                     console.log('生成的带签名URL：', signedUrl);

@@ -6,6 +6,5 @@ export default defineContentScript({
         //         const currentValue = await storage.getItem('local:counter');
         //         console.log('Counter value in content script:', currentValue);
         // },1000)
-
     },
 });
